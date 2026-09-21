@@ -124,7 +124,7 @@
   display: block;
   width: 100%;
   padding: 1rem;
-  background-color: #25d366;
+  background-color: #1e7e34;
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
@@ -137,7 +137,7 @@
 }
 
 .whatsappBtn:hover {
-  background-color: #1da851;
+  background-color: #155d27;
   transform: translateY(-2px);
 }
 

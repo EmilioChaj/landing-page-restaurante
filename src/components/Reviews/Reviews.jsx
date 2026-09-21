@@ -38,7 +38,7 @@ const Reviews = () => {
                 <div className={styles.header}>
                   <img src={review.foto} alt={review.nombre} className={styles.avatar} />
                   <div>
-                    <h4 className={styles.name}>{review.nombre}</h4>
+                    <p className={styles.name}>{review.nombre}</p>
                     <div className={styles.stars}>
                       {[...Array(5)].map((_, i) => (
                         <span key={i} className={i < review.estrellas ? styles.filled : styles.empty}>
@@ -57,12 +57,14 @@ const Reviews = () => {
           <button className={styles.navBtn} onClick={nextSlide}>›</button>
         </div>
 
-        <div className={styles.dots}>
+        <div className={styles.dots} role="group" aria-label="Paginación de reseñas">
           {[...Array(totalPages)].map((_, i) => (
             <button
               key={i}
               className={`${styles.dot} ${i === currentIndex ? styles.active : ''}`}
               onClick={() => setCurrentIndex(i)}
+              aria-label={`Mostrar reseña ${i + 1}`}
+              aria-current={i === currentIndex ? 'true' : undefined}
             />
           ))}
         </div>
