@@ -101,6 +101,46 @@
   cursor: not-allowed;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-light, #888);
+  font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-gray, #ddd);
+}
+
+.divider span {
+  padding: 0 0.75rem;
+}
+
+.whatsappBtn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.whatsappBtn:hover {
+  background-color: #1da851;
+  transform: translateY(-2px);
+}
+
 .info {
   background-color: var(--color-primary);
   color: var(--color-white);

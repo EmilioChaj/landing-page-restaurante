@@ -1,72 +1,69 @@
-import { useState } from 'react';
+import restaurantData from '../../data/restaurant.json';
+import useForm from '../../hooks/useForm';
 import styles from './Reservations.module.css';
 
+const initialValues = {
+  nombre: '',
+  email: '',
+  telefono: '',
+  fecha: '',
+  hora: '',
+  personas: '2',
+  notas: ''
+};
+
+const validate = (data) => {
+  const newErrors = {};
+
+  if (!data.nombre.trim() || data.nombre.trim().length < 2) {
+    newErrors.nombre = 'El nombre debe tener al menos 2 caracteres';
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(data.email)) {
+    newErrors.email = 'Email no válido';
+  }
+
+  const phoneRegex = /^[\+]?[\d\s\-\(\)]{7,15}$/;
+  if (!phoneRegex.test(data.telefono)) {
+    newErrors.telefono = 'Teléfono no válido';
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  if (!data.fecha || new Date(data.fecha) < today) {
+    newErrors.fecha = 'Selecciona una fecha futura';
+  }
+
+  if (!data.hora) {
+    newErrors.hora = 'Selecciona una hora';
+  }
+
+  return newErrors;
+};
+
 const Reservations = () => {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    fecha: '',
-    hora: '',
-    personas: '2',
-    notas: ''
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const {
+    formData,
+    errors,
+    isSubmitting,
+    submitSuccess,
+    handleChange,
+    handleSubmit,
+  } = useForm(initialValues, validate);
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.nombre.trim() || formData.nombre.trim().length < 2) {
-      newErrors.nombre = 'El nombre debe tener al menos 2 caracteres';
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Email no válido';
-    }
-
-    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-    if (!phoneRegex.test(formData.telefono)) {
-      newErrors.telefono = 'Teléfono no válido';
-    }
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (!formData.fecha || new Date(formData.fecha) < today) {
-      newErrors.fecha = 'Selecciona una fecha futura';
-    }
-
-    if (!formData.hora) {
-      newErrors.hora = 'Selecciona una hora';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const getWhatsAppUrl = (data) => {
+    const msg = `🍽️ Reserva\nNombre: ${data.nombre}\nPersonas: ${data.personas}\nFecha: ${data.fecha}\nHora: ${data.hora}\nTeléfono: ${data.telefono}\nNotas: ${data.notas || 'Ninguna'}`;
+    return `https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    setTimeout(() => setSubmitSuccess(false), 5000);
-    setFormData({
-      nombre: '', email: '', telefono: '', fecha: '', hora: '', personas: '2', notas: ''
+  const onSubmit = async (data) => {
+    const res = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
+    if (!res.ok) throw new Error('Error al enviar la reserva');
   };
 
   return (
@@ -84,7 +81,7 @@ const Reservations = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
               <div className={styles.row}>
                 <div className={styles.field}>
                   <label htmlFor="nombre">Nombre *</label>
@@ -122,7 +119,8 @@ const Reservations = () => {
                     name="telefono"
                     value={formData.telefono}
                     onChange={handleChange}
-                    placeholder="+34 612 345 678"
+                    placeholder="+502 61223698"
+                    
                   />
                   {errors.telefono && <span className={styles.error}>{errors.telefono}</span>}
                 </div>
@@ -189,6 +187,19 @@ const Reservations = () => {
               >
                 {isSubmitting ? 'Enviando...' : 'Confirmar Reserva'}
               </button>
+
+              <div className={styles.divider}>
+                <span>o</span>
+              </div>
+
+              <a
+                href={getWhatsAppUrl(formData)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.whatsappBtn}
+              >
+                Reserva por WhatsApp
+              </a>
             </form>
           </div>
 
@@ -197,15 +208,15 @@ const Reservations = () => {
 
             <div className={styles.infoItem}>
               <h4>Horarios</h4>
-              <p>Lunes a Viernes: 13:00 - 16:00, 19:00 - 23:00</p>
-              <p>Sábados: 13:00 - 23:30</p>
-              <p>Domingos: 13:00 - 16:00</p>
+              <p>Lunes a Viernes: {restaurantData.horarios.lunesViernes}</p>
+              <p>Sábados: {restaurantData.horarios.sabados}</p>
+              <p>Domingos: {restaurantData.horarios.domingos}</p>
             </div>
 
             <div className={styles.infoItem}>
               <h4>Contacto</h4>
-              <p>📞 +34 912 345 678</p>
-              <p>📧 info@ladolcevita.es</p>
+              <p>📞 {restaurantData.telefono}</p>
+              <p>📧 {restaurantData.email}</p>
             </div>
 
             <div className={styles.infoItem}>

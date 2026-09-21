@@ -1,17 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import useScrollPosition from '../../hooks/useScrollPosition';
 import styles from './Header.module.css';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollY = useScrollPosition();
+  const isScrolled = scrollY > 50;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { href: '#inicio', label: 'Inicio' },

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import galleryData from '../../data/gallery.json';
 import styles from './Gallery.module.css';
 
@@ -11,14 +11,21 @@ const Gallery = () => {
     ? galleryData
     : galleryData.filter(img => img.categoria === activeFilter);
 
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [selectedImage]);
+
   const openLightbox = (image) => {
     setSelectedImage(image);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
-    document.body.style.overflow = 'auto';
   };
 
   const navigate = (direction) => {

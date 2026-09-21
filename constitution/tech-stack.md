@@ -43,7 +43,7 @@ npm run test         # Ejecutar tests
   "descripcion": "Pan tostado con tomate, albahaca y ajo",
   "precio": 8.50,
   "imagen": "/images/bruschetta.jpg",
-  "categoria": "Antipasti",
+  "categoria": "Entradas",
   "destacado": false
 }
 ```

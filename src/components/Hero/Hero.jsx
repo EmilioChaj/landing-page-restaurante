@@ -1,27 +1,9 @@
-import { useEffect, useRef } from 'react';
+import useScrollPosition from '../../hooks/useScrollPosition';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-  const scrollIndicatorRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollIndicatorRef.current) {
-        const opacity = 1 - (window.scrollY / 300);
-        scrollIndicatorRef.current.style.opacity = Math.max(0, opacity);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToMenu = (e) => {
-    e.preventDefault();
-    const element = document.querySelector('#menu');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollY = useScrollPosition();
+  const scrollOpacity = Math.max(0, 1 - (scrollY / 300));
 
   return (
     <section id="inicio" className={styles.hero}>
@@ -38,7 +20,7 @@ const Hero = () => {
           Reserva Tu Mesa
         </a>
       </div>
-      <div ref={scrollIndicatorRef} className={styles.scrollIndicator}>
+      <div className={styles.scrollIndicator} style={{ opacity: scrollOpacity }}>
         <span className={styles.scrollText}>Scroll</span>
         <div className={styles.scrollLine}></div>
       </div>

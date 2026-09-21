@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import restaurantData from '../../data/restaurant.json';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -43,9 +44,9 @@ const Footer = () => {
 
           <div className={styles.contact}>
             <h4>Contacto</h4>
-            <p>📍 Calle Gran Vía, 42<br />28013 Madrid</p>
-            <p>📞 +34 912 345 678</p>
-            <p>✉️ info@ladolcevita.es</p>
+            <p>📍 {restaurantData.direccion.calle}<br />{restaurantData.direccion.ciudad.split(',')[0]}</p>
+            <p>📞 {restaurantData.telefono}</p>
+            <p>✉️ {restaurantData.email}</p>
           </div>
 
           <div className={styles.newsletter}>

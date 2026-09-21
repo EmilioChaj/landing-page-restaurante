@@ -6,7 +6,7 @@ Crear una sección de menú visualmente atractiva que muestre los platos del res
 ## Implementación
 1. **Menu Component:**
    - Título de sección con decoración dorada
-   - Filtro de categorías (Antipasti, Primi, Secondi, Dolci)
+   - Filtro de categorías (Entradas, Primeros Platos, Platos Fuertes, Postres)
    - Grid responsive de platos
    - Cada plato muestra: imagen, nombre, descripción, precio
 

@@ -4,7 +4,7 @@ import styles from './Menu.module.css';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('Todos');
-  const categories = ['Todos', 'Antipasti', 'Primi', 'Secondi', 'Dolci'];
+  const categories = ['Todos', 'Entradas', 'Primeros Platos', 'Platos Fuertes', 'Postres'];
 
   const filteredItems = activeCategory === 'Todos'
     ? menuData
@@ -42,7 +42,7 @@ const Menu = () => {
                 <h3 className={styles.name}>{item.nombre}</h3>
                 <p className={styles.description}>{item.descripcion}</p>
                 <div className={styles.footer}>
-                  <span className={styles.price}>€{item.precio.toFixed(2)}</span>
+                  <span className={styles.price}>Q{item.precio.toFixed(2)}</span>
                 </div>
               </div>
             </article>

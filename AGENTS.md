@@ -83,7 +83,7 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 ## Wireframe (de funcionalidad)
 1. **Header/Navbar:** Logo, enlaces de navegación (Menú, Reservar, Galería, Contacto, Reseñas).
 2. **Hero:** Imagen de fondo atractiva, título principal ("La Dolce Vita"), subtítulo, botón CTA ("Reserva Ahora").
-3. **Menú Digital:** Categorías (Antipasti, Primi, Secondi, Dolci), grid de platos con imagen, nombre, descripción, precio.
+3. **Menú Digital:** Categorías (Entradas, Primeros Platos, Platos Fuertes, Postres), grid de platos con imagen, nombre, descripción, precio.
 4. **Reservaciones:** Formulario con campos: Nombre, Email, Teléfono, Fecha, Hora, Número de personas.
 5. **Galería de Fotos:** Grid de imágenes (masonry o carrusel) del restaurante y platos.
 6. **Ubicación/Contacto:** Mapa embebido (Google Maps/Leaflet), dirección, teléfono, email, horarios, iconos de redes sociales.
@@ -171,7 +171,7 @@ Menu abierto:
 |                                  NUESTRO MENÚ                                                    |
 |                                  ───────────                                                     |
 |                                                                                                  |
-|     [Todos]  [Antipasti]  [Primi]  [Secondi]  [Dolci]                                            |
+|     [Todos]  [Entradas]  [Primeros Platos]  [Platos Fuertes]  [Postres]                          |
 |                                                                                                  |
 |  +------------------+  +------------------+  +------------------+  +------------------+           |
 |  | [Imagen Plato]   |  | [Imagen Plato]   |  | [Imagen Plato]   |  | [Imagen Plato]   |           |
@@ -194,9 +194,10 @@ Menu abierto:
 |     NUESTRO MENÚ          |
 |     ───────────           |
 |                           |
-| [Todos] [Antipasti]       |
-| [Primi] [Secondi]         |
-| [Dolci]                   |
+| [Todos] [Entradas]        |
+| [Primeros Platos]         |
+| [Platos Fuertes]          |
+| [Postres]                 |
 |                           |
 | +-----------------------+ |
 | | [Imagen Plato]        | |

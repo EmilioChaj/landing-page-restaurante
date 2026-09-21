@@ -1,0 +1,21 @@
+{
+  "nombre": "La Dolce Vita",
+  "tagline": "Auténtica cocina italiana desde 1985",
+  "direccion": {
+    "calle": "Gasolinera San Miguel, 12",
+    "ciudad": "cantel Quetzaltenango, Guatemala"
+  },
+  "telefono": "+502 58621717",
+  "telefonoLink": "+502 61223698",
+  "email": "emichg5862@gmail.com",
+  "horarios": {
+    "lunesViernes": "13:00 - 16:00, 19:00 - 23:00",
+    "sabados": "13:00 - 23:30",
+    "domingos": "13:00 - 16:00"
+  },
+  "redesSociales": {
+    "instagram": "#",
+    "facebook": "#",
+    "tripadvisor": "#"
+  }
+}

@@ -1,16 +1,78 @@
-# React + Vite
+# La Dolce Vita - Landing Page Restaurante Italiano
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page moderna, elegante y responsiva para un restaurante italiano.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Header:** Navbar fija con logo, navegación y botón CTA
+- **Hero:** Sección principal con imagen de fondo y animaciones
+- **Menú Digital:** Catálogo de platos con filtrado por categoría
+- **Reservaciones:** Formulario con validación cliente
+- **Galería:** Grid de fotos con lightbox
+- **Ubicación:** Información de contacto + mapa embebido
+- **Reseñas:** Carrusel de testimonios de clientes
+- **Footer:** Links, contacto y newsletter
 
-## React Compiler
+## Stack Tecnológico
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Tecnología | Versión | Propósito |
+|------------|---------|-----------|
+| React | ^18.2.0 | UI Library |
+| Vite | ^5.0.8 | Build tool & dev server |
+| CSS Modules | - | Estilos encapsulados |
 
-## Expanding the Oxlint configuration
+## Estructura del Proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+src/
+├── assets/           # Imágenes estáticas
+├── components/       # Componentes React
+│   ├── Header/
+│   ├── Hero/
+│   ├── Menu/
+│   ├── Reservations/
+│   ├── Gallery/
+│   ├── Location/
+│   ├── Reviews/
+│   └── Footer/
+├── data/             # Datos JSON (menú, reseñas, galería)
+├── styles/           # Estilos globales
+├── App.jsx
+└── main.jsx
+```
+
+## Instalación
+
+```bash
+npm install
+```
+
+## Desarrollo
+
+```bash
+npm run dev
+```
+
+## Build para Producción
+
+```bash
+npm run build
+```
+
+## Preview del Build
+
+```bash
+npm run preview
+```
+
+## Datos
+
+- `src/data/menu.json` - 12 platos (Antipasti, Primi, Secondi, Dolci)
+- `src/data/reviews.json` - 6 reseñas de clientes
+- `src/data/gallery.json` - 8 imágenes de galería
+
+## Diseño
+
+- **Paleta:** Negro (#1a1a1a) + Dorado (#d4af37)
+- **Tipografía:** Playfair Display (títulos), Lato (cuerpo)
+- **Responsive:** Mobile-first con breakpoints en 768px

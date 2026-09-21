@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import reviewsData from '../../data/reviews.json';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import styles from './Reviews.module.css';
 
 const Reviews = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const reviewsPerPage = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3;
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const reviewsPerPage = isMobile ? 1 : 3;
   const totalPages = Math.ceil(reviewsData.length / reviewsPerPage);
 
   const nextSlide = () => {
