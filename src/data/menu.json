@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "nombre": "Bruschetta Classica",
+    "descripcion": "Pan tostado con tomate fresco, albahaca y ajo. Un clásico italiano.",
+    "precio": 8.50,
+    "imagen": "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80",
+    "categoria": "Antipasti",
+    "destacado": false
+  },
+  {
+    "id": 2,
+    "nombre": "Carpaccio di Manzo",
+    "descripcion": "Finas láminas de ternera con rúcula, parmesano y trufa negra.",
+    "precio": 14.00,
+    "imagen": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&q=80",
+    "categoria": "Antipasti",
+    "destacado": true
+  },
+  {
+    "id": 3,
+    "nombre": "Calamari Fritti",
+    "descripcion": "Calamares rebozados y fritos, servidos con salsa marinara.",
+    "precio": 12.50,
+    "imagen": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80",
+    "categoria": "Antipasti",
+    "destacado": false
+  },
+  {
+    "id": 4,
+    "nombre": "Spaghetti alla Carbonara",
+    "descripcion": "Auténtica carbonara romana con guanciale, pecorino y huevo.",
+    "precio": 16.00,
+    "imagen": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&q=80",
+    "categoria": "Primi",
+    "destacado": true
+  },
+  {
+    "id": 5,
+    "nombre": "Risotto ai Funghi Porcini",
+    "descripcion": "Arroz arborio cremoso con setas porcini frescas y parmesano.",
+    "precio": 18.00,
+    "imagen": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&q=80",
+    "categoria": "Primi",
+    "destacado": false
+  },
+  {
+    "id": 6,
+    "nombre": "Penne all'Arrabbiata",
+    "descripcion": "Penne con salsa de tomate picante, ajo y albahaca fresca.",
+    "precio": 14.50,
+    "imagen": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&q=80",
+    "categoria": "Primi",
+    "destacado": false
+  },
+  {
+    "id": 7,
+    "nombre": "Ossobuco alla Milanese",
+    "descripcion": "Espinilla de ternera braseada con gremolata y risotto amarillo.",
+    "precio": 28.00,
+    "imagen": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80",
+    "categoria": "Secondi",
+    "destacado": true
+  },
+  {
+    "id": 8,
+    "nombre": "Branzino al Forno",
+    "descripcion": "Lubina entera al horno con hierbas, limón y verduras de estación.",
+    "precio": 26.00,
+    "imagen": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a0?w=400&q=80",
+    "categoria": "Secondi",
+    "destacado": false
+  },
+  {
+    "id": 9,
+    "nombre": "Pollo alla Parmigiana",
+    "descripcion": "Pechuga de pollo empanizada con salsa marinara y mozzarella fundida.",
+    "precio": 22.00,
+    "imagen": "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&q=80",
+    "categoria": "Secondi",
+    "destacado": false
+  },
+  {
+    "id": 10,
+    "nombre": "Tiramisù Classico",
+    "descripcion": "El postre italiano por excelencia con café espresso y mascarpone.",
+    "precio": 9.00,
+    "imagen": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80",
+    "categoria": "Dolci",
+    "destacado": true
+  },
+  {
+    "id": 11,
+    "nombre": "Panna Cotta",
+    "descripcion": "Crema cocida con salsa de frutos rojos frescos y menta.",
+    "precio": 8.50,
+    "imagen": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80",
+    "categoria": "Dolci",
+    "destacado": false
+  },
+  {
+    "id": 12,
+    "nombre": "Cannoli Siciliani",
+    "descripcion": "Crujientes tubos de masa rellenos de ricotta dulce y chocolate.",
+    "precio": 8.00,
+    "imagen": "https://images.unsplash.com/photo-1586040140378-b5c3fee5c5c8?w=400&q=80",
+    "categoria": "Dolci",
+    "destacado": false
+  }
+]

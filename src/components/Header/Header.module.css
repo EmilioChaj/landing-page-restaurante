@@ -1,0 +1,173 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all var(--transition-normal);
+  background-color: transparent;
+}
+
+.header.scrolled {
+  background-color: var(--color-primary);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1001;
+}
+
+.logoIcon {
+  font-size: 1.75rem;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-white);
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: width var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--color-secondary);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.ctaButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.ctaButton:hover {
+  background-color: var(--color-dark-gold);
+  transform: translateY(-2px);
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menuToggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-white);
+  transition: all var(--transition-fast);
+}
+
+.menuToggle.menuOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuToggle.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggle.menuOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .menuToggle {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-primary);
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+  }
+
+  .nav.navOpen {
+    transform: translateX(0);
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .navLink {
+    font-size: 1.25rem;
+  }
+
+  .ctaButton {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}

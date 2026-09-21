@@ -1,0 +1,130 @@
+.reviews {
+  background-color: var(--color-primary);
+}
+
+.reviews .section-title h2 {
+  color: var(--color-white);
+}
+
+.reviews .section-title h2::after {
+  background-color: var(--color-secondary);
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.navBtn {
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.navBtn:hover {
+  transform: scale(1.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--color-secondary);
+  transform: translateY(-5px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-secondary);
+}
+
+.name {
+  color: var(--color-white);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.filled {
+  color: var(--color-secondary);
+}
+
+.empty {
+  color: var(--color-gray);
+}
+
+.comment {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--spacing-md);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dot.active {
+  background-color: var(--color-secondary);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navBtn {
+    font-size: 2rem;
+  }
+}
