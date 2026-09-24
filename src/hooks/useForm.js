@@ -57,6 +57,7 @@ const useForm = (initialValues, validate) => {
     handleSubmit,
     resetForm,
     setFormData,
+    setErrors,
   };
 };
 

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "nombre": "María García",
+    "foto": "https://i.pravatar.cc/150?img=1",
+    "estrellas": 5,
+    "comentario": "¡Increíble experiencia! La pasta carbonara es la mejor que he probado fuera de Italia. El servicio es excepcional.",
+    "fecha": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Rodríguez",
+    "foto": "https://i.pravatar.cc/150?img=2",
+    "estrellas": 5,
+    "comentario": "Celebré mi aniversario aquí y fue perfecto. Ambiente romántico, comida deliciosa y atención impecable.",
+    "fecha": "2024-01-10"
+  },
+  {
+    "id": 3,
+    "nombre": "Ana Martínez",
+    "foto": "https://i.pravatar.cc/150?img=3",
+    "estrellas": 4,
+    "comentario": "Excelente restaurante italiano. El tiramisù es divino. Solo le doy 4 estrellas porque la espera fue un poco larga.",
+    "fecha": "2024-01-05"
+  },
+  {
+    "id": 4,
+    "nombre": "Pedro Sánchez",
+    "foto": "https://i.pravatar.cc/150?img=4",
+    "estrellas": 5,
+    "comentario": "El mejor restaurante italiano de Madrid. Los ingredientes son frescos y el chef nota que sabe lo que hace.",
+    "fecha": "2023-12-28"
+  },
+  {
+    "id": 5,
+    "nombre": "Laura Fernández",
+    "foto": "https://i.pravatar.cc/150?img=5",
+    "estrellas": 5,
+    "comentario": "Volví por tercera vez y no me decepcionó. La calidad es constante y el ambiente es perfecto para cualquier ocasión.",
+    "fecha": "2023-12-20"
+  },
+  {
+    "id": 6,
+    "nombre": "Javier López",
+    "foto": "https://i.pravatar.cc/150?img=6",
+    "estrellas": 4,
+    "comentario": "Muy buen restaurante. El risotto de setas es espectacular. Recomendable para una cena especial.",
+    "fecha": "2023-12-15"
+  },
+  {
+    "id": 7,
+    "nombre": "Emilio",
+    "foto": "https://ui-avatars.com/api/?name=Emilio&background=b8960b&color=1a1a1a&size=128",
+    "estrellas": 3,
+    "comentario": "aaaaaaaaaaaaaaaaaaa gggggggggggggggggggggggg eeeeeeeeeeeeeet",
+    "fecha": "2026-09-24"
+  }
+]

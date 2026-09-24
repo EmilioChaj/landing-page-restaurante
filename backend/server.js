@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import newsletterRoutes, { handleConfirm } from './routes/newsletter.js';
+import reviewsRoutes from './routes/reviews.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,6 +23,7 @@ app.get('/health', (req, res) => {
 app.get('/confirmado', handleConfirm);
 
 app.use('/api', newsletterRoutes);
+app.use('/api', reviewsRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });

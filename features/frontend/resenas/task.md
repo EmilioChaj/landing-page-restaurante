@@ -28,4 +28,16 @@
 6. **Integración** (1h)
    - Integrar en App.jsx
 
-### Total Estimado: 8 horas
+7. **Publicar Reseña (fetch + formulario)** (2h)
+   - GET /api/reviews en useEffect con fallback a JSON estático
+   - Formulario debajo del carrusel (nombre, estrellas 1-5, comentario)
+   - Validación con hook useForm
+   - POST /api/reviews → prepend inmediato + mensaje éxito
+   - Estilos del formulario en modo oscuro
+
+8. **Tests** (1h)
+   - Mock de fetch (GET fallido → datos estáticos, POST exitoso → prepend)
+   - Validaciones de formulario
+   - Mensajes de éxito/error
+
+### Total Estimado: 11 horas

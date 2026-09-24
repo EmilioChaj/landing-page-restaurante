@@ -1,5 +1,5 @@
 {
-  "name": "la-dolce-vita-backend",
+  "name": "corte-italiana-backend",
   "version": "1.0.0",
   "description": "Backend Express para newsletter con Brevo",
   "type": "module",

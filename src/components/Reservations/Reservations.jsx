@@ -221,7 +221,7 @@ const Reservations = () => {
 
             <div className={styles.infoItem}>
               <h4>Política de Cancelación</h4>
-              <p>Por favor, cancele con al menos 24 horas de antelación.</p>
+              <p>Por favor, cancele con al menos 1 horas de antelación.</p>
             </div>
           </div>
         </div>

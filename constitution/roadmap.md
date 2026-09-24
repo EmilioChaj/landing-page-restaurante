@@ -12,6 +12,7 @@
 - [x] Implementar feature: Reseñas
 - [x] Formulario de newsletter (frontend + backend Express + Brevo)
 - [x] Backend Express con integración Brevo (double opt-in, GDPR, rate limiting)
+- [x] Publicar reseñas inmediatamente (POST/GET /api/reviews + formulario frontend)
 
 ## Siguiente
 - [ ] Desplegar backend en Render
