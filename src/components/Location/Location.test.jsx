@@ -43,7 +43,6 @@ describe('Location', () => {
     expect(screen.getByText('Síguenos')).toBeInTheDocument();
     expect(screen.getByLabelText('Instagram')).toBeInTheDocument();
     expect(screen.getByLabelText('Facebook')).toBeInTheDocument();
-    expect(screen.getByLabelText('TripAdvisor')).toBeInTheDocument();
   });
 
   it('renders map iframe with accessible title', () => {

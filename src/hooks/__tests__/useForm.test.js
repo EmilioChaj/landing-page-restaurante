@@ -17,6 +17,7 @@ describe('useForm', () => {
     expect(result.current.errors).toEqual({});
     expect(result.current.isSubmitting).toBe(false);
     expect(result.current.submitSuccess).toBe(false);
+    expect(result.current.submitError).toBe('');
   });
 
   it('handleChange updates field and clears error', () => {
@@ -29,6 +30,26 @@ describe('useForm', () => {
     });
 
     expect(result.current.formData.name).toBe('Mario');
+  });
+
+  it('handleChange sets boolean checked for checkbox inputs', () => {
+    const { result } = renderHook(() => useForm({ gdpr: false }, null));
+
+    act(() => {
+      result.current.handleChange({
+        target: { name: 'gdpr', type: 'checkbox', checked: true, value: 'on' },
+      });
+    });
+
+    expect(result.current.formData.gdpr).toBe(true);
+
+    act(() => {
+      result.current.handleChange({
+        target: { name: 'gdpr', type: 'checkbox', checked: false, value: 'on' },
+      });
+    });
+
+    expect(result.current.formData.gdpr).toBe(false);
   });
 
   it('handleChange clears error for the field', () => {
@@ -114,6 +135,36 @@ describe('useForm', () => {
     });
 
     expect(result.current.submitSuccess).toBe(true);
+  });
+
+  it('handleSubmit sets submitError when onSubmit throws', async () => {
+    const onSubmit = vi.fn().mockRejectedValue(new Error('Error del servidor'));
+    const validValues = { name: 'Mario', email: 'mario@test.com' };
+    const { result } = renderHook(() => useForm(validValues, validate));
+
+    await act(async () => {
+      await result.current.handleSubmit(onSubmit)({
+        preventDefault: () => {},
+      });
+    });
+
+    expect(result.current.submitError).toBe('Error del servidor');
+    expect(result.current.submitSuccess).toBe(false);
+    expect(result.current.isSubmitting).toBe(false);
+  });
+
+  it('handleSubmit resets isSubmitting after error', async () => {
+    const onSubmit = vi.fn().mockRejectedValue(new Error('fallo'));
+    const validValues = { name: 'Mario', email: 'mario@test.com' };
+    const { result } = renderHook(() => useForm(validValues, validate));
+
+    await act(async () => {
+      await result.current.handleSubmit(onSubmit)({
+        preventDefault: () => {},
+      });
+    });
+
+    expect(result.current.isSubmitting).toBe(false);
   });
 
   it('resetForm restores initial values and clears errors', () => {

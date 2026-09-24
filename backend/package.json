@@ -1,0 +1,18 @@
+{
+  "name": "la-dolce-vita-backend",
+  "version": "1.0.0",
+  "description": "Backend Express para newsletter con Brevo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@getbrevo/brevo": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0"
+  }
+}

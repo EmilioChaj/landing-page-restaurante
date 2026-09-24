@@ -52,7 +52,6 @@ const Location = () => {
               <div className={styles.socialLinks}>
                 <a href={restaurantData.redesSociales.instagram} aria-label="Instagram">📷</a>
                 <a href={restaurantData.redesSociales.facebook} aria-label="Facebook">👥</a>
-                <a href={restaurantData.redesSociales.tripadvisor} aria-label="TripAdvisor">⭐</a>
               </div>
             </div>
           </div>

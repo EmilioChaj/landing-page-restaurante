@@ -23,3 +23,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/*.log

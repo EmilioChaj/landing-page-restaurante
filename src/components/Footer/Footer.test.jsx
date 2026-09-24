@@ -1,11 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import Footer from './Footer';
-import restaurantData from '../../data/restaurant.json';
 
 const user = userEvent.setup();
 
 describe('Footer', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    vi.stubEnv('VITE_API_URL', 'http://localhost:3001');
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   it('renders restaurant name', () => {
     render(<Footer />);
 
@@ -28,20 +37,70 @@ describe('Footer', () => {
     expect(screen.getByText(/emichg5862@gmail\.com/)).toBeInTheDocument();
   });
 
-  it('renders newsletter form', () => {
+  it('renders newsletter form with email input and GDPR checkbox', () => {
     render(<Footer />);
 
     expect(screen.getByText('Newsletter')).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/tu email/i)).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).toBeInTheDocument();
+    expect(screen.getByText(/política de privacidad/i)).toBeInTheDocument();
   });
 
-  it('shows success message on newsletter submit', async () => {
+  it('shows error when email is invalid', async () => {
+    render(<Footer />);
+
+    await user.type(screen.getByPlaceholderText(/tu email/i), 'invalido');
+    await user.click(screen.getByRole('checkbox'));
+    await user.click(screen.getByRole('button', { name: '→' }));
+
+    expect(screen.getByText('Email no válido')).toBeInTheDocument();
+  });
+
+  it('shows error when GDPR is not accepted', async () => {
     render(<Footer />);
 
     await user.type(screen.getByPlaceholderText(/tu email/i), 'test@test.com');
     await user.click(screen.getByRole('button', { name: '→' }));
 
-    expect(screen.getByText(/gracias por suscribirte/i)).toBeInTheDocument();
+    const errors = screen.getAllByText(/política de privacidad/i);
+    expect(errors.some((el) => el.className.includes('error'))).toBe(true);
+  });
+
+  it('shows success message on successful newsletter submit', async () => {
+    vi.spyOn(global, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => ({ success: true }),
+    });
+
+    render(<Footer />);
+
+    await user.type(screen.getByPlaceholderText(/tu email/i), 'test@test.com');
+    await user.click(screen.getByRole('checkbox'));
+    await user.click(screen.getByRole('button', { name: '→' }));
+
+    expect(await screen.findByText(/revisa tu email/i)).toBeInTheDocument();
+    expect(global.fetch).toHaveBeenCalledWith(
+      'http://localhost:3001/api/subscribe',
+      expect.objectContaining({
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+  });
+
+  it('shows error message when API request fails', async () => {
+    vi.spyOn(global, 'fetch').mockResolvedValue({
+      ok: false,
+      json: async () => ({ error: 'Error' }),
+    });
+
+    render(<Footer />);
+
+    await user.type(screen.getByPlaceholderText(/tu email/i), 'test@test.com');
+    await user.click(screen.getByRole('checkbox'));
+    await user.click(screen.getByRole('button', { name: '→' }));
+
+    expect(await screen.findByText(/error al suscribirse/i)).toBeInTheDocument();
   });
 
   it('renders current year in copyright', () => {

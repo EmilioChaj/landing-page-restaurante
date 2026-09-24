@@ -75,10 +75,11 @@
 
 .form {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
-.form input {
+.form input[type='email'] {
   flex: 1;
   padding: 0.75rem;
   font-size: 0.9rem;
@@ -88,6 +89,38 @@
   color: var(--color-white);
 }
 
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.checkbox input[type='checkbox'] {
+  margin-top: 0.2rem;
+  accent-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.gdprLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  display: block;
+}
+
+.loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .form input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -95,6 +128,11 @@
 .form input:focus {
   outline: none;
   border-color: var(--color-secondary);
+}
+
+.form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .form button {
@@ -136,5 +174,9 @@
   .logo,
   .form {
     justify-content: center;
+  }
+
+  .form {
+    align-items: stretch;
   }
 }

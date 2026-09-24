@@ -11,7 +11,7 @@
 - [ ] Teléfono con enlace tel:
 - [ ] Email con enlace mailto:
 - [ ] Horarios de apertura (L-V, Sáb, Dom)
-- [ ] Iconos de redes sociales (Instagram, Facebook, TripAdvisor)
+- [ ] Iconos de redes sociales (Instagram, Facebook)
 
 ### Mapa
 - [ ] Mapa embebido (Google Maps u OSM)
