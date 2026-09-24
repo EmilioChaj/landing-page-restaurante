@@ -50,8 +50,22 @@ const Location = () => {
             <div className={styles.social}>
               <h3>Síguenos</h3>
               <div className={styles.socialLinks}>
-                <a href={restaurantData.redesSociales.instagram} aria-label="Instagram">📷</a>
-                <a href={restaurantData.redesSociales.facebook} aria-label="Facebook">👥</a>
+                <a
+                  href={restaurantData.redesSociales.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  📷
+                </a>
+                <a
+                  href={restaurantData.redesSociales.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  👥
+                </a>
               </div>
             </div>
           </div>

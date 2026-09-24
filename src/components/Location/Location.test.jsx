@@ -45,6 +45,18 @@ describe('Location', () => {
     expect(screen.getByLabelText('Facebook')).toBeInTheDocument();
   });
 
+  it('opens social media links in a new tab', () => {
+    render(<Location />);
+
+    const instagram = screen.getByLabelText('Instagram');
+    const facebook = screen.getByLabelText('Facebook');
+
+    expect(instagram).toHaveAttribute('target', '_blank');
+    expect(instagram).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(facebook).toHaveAttribute('target', '_blank');
+    expect(facebook).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
   it('renders map iframe with accessible title', () => {
     render(<Location />);
 
