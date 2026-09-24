@@ -1,23 +1,31 @@
 # AGENTS.md
 
 ## Objetivo
-Desarrollar una landing page moderna, elegante y responsiva para un restaurante italiano. La página debe mostrar el menú, permitir reservaciones, mostrar una galería de fotos, proporcionar información de contacto/ubicación y presentar reseñas de clientes. El diseño será "Elegante (negro/dorado)".
+Desarrollar una landing page moderna, elegante y responsiva para un restaurante italiano ("Corte Italiana"). La página muestra el menú, permite reservaciones, muestra una galería de fotos, proporciona información de contacto/ubicación, presenta reseñas de clientes con publicación inmediata y suscripción a newsletter. El diseño es "Elegante (negro/dorado)".
 
 ## Stack
-- **Framework:** React (con Vite)
-- **Lenguaje:** JavaScript (o TypeScript si se prefiere tipado estricto)
-- **Estilos:** CSS Modules o Styled Components (para encapsulamiento)
-- **Herramientas:** npm/yarn/pnpm
-- **Testing:** Vitest + React Testing Library (recomendado)
+- **Frontend:** React 18 + Vite 5, JavaScript, CSS Modules
+- **Backend:** Express 4 (`backend/`), express-rate-limit, CORS, dotenv
+- **Newsletter:** Brevo (double opt-in)
+- **Testing:** Vitest + React Testing Library (76 tests)
+- **Linting:** ESLint
+- **Herramientas:** npm
 
 ## Comandos
-- `npm create vite@latest . -- --template react`: Inicializar proyecto Vite en directorio actual.
+
+### Frontend
 - `npm install`: Instalar dependencias.
-- `npm run dev`: Ej servidor de desarrollo.
+- `npm run dev`: Servidor de desarrollo (puerto 5173).
 - `npm run build`: Build para producción.
 - `npm run preview`: Previsualizar build.
 - `npm run lint`: Ejecutar linter (ESLint).
-- `npm run test`: Ejecutar tests.
+- `npm run test`: Ejecutar tests (Vitest).
+- `npm run test:watch`: Tests en watch mode.
+
+### Backend
+- `cd backend && npm install`: Instalar dependencias del backend.
+- `npm run dev`: Servidor con `--watch` (puerto 3001).
+- `npm start`: Servidor en producción.
 
 ## Estructura del Proyecto
 ```
@@ -29,31 +37,36 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 │   ├── roadmap.md
 │   └── tech-stack.md
 ├── features/
-│   ├── navigation-hero/
-│   │   ├── plan.md
-│   │   ├── spec.md
-│   │   └── task.md
-│   ├── menu-digital/
-│   │   ├── plan.md
-│   │   ├── spec.md
-│   │   └── task.md
-│   ├── reservaciones/
-│   │   ├── plan.md
-│   │   ├── spec.md
-│   │   └── task.md
-│   ├── galeria-fotos/
-│   │   ├── plan.md
-│   │   ├── spec.md
-│   │   └── task.md
-│   ├── ubicacion-contacto/
-│   │   ├── plan.md
-│   │   ├── spec.md
-│   │   └── task.md
-│   └── resenas/
-│       ├── plan.md
-│       ├── spec.md
-│       └── task.md
+│   ├── frontend/
+│   │   ├── navigation-hero/
+│   │   ├── menu-digital/
+│   │   ├── reservaciones/
+│   │   ├── galeria-fotos/
+│   │   ├── ubicacion-contacto/
+│   │   ├── resenas/
+│   │   └── newsletter/
+│   └── backend/
+│       ├── servidor-express/
+│       ├── api-suscripcion/
+│       ├── integracion-brevo/
+│       ├── confirmacion-doi/
+│       ├── api-reseñas/
+│       └── despliegue-render/
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── newsletter.js
+│   │   └── reviews.js
+│   ├── middleware/
+│   │   └── rateLimiter.js
+│   ├── services/
+│   │   └── brevo.js
+│   ├── data/
+│   │   └── reviews.json
+│   ├── .env.example
+│   └── package.json
 ├── public/
+│   └── favicon.svg          # 🍝 negro/dorado
 ├── src/
 │   ├── assets/
 │   ├── components/
@@ -65,20 +78,36 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 │   │   ├── Location/
 │   │   ├── Reviews/
 │   │   └── Footer/
+│   ├── data/
+│   │   ├── restaurant.json  # Datos canónicos del restaurante
+│   │   ├── menu.json
+│   │   ├── reviews.json     # Fallback si el backend no responde
+│   │   └── gallery.json
 │   ├── hooks/
+│   │   ├── useForm.js
+│   │   ├── useMediaQuery.js
+│   │   └── useScrollPosition.js
 │   ├── styles/
 │   ├── App.jsx
 │   └── main.jsx
+├── .env.example
 ├── index.html
 ├── package.json
 └── vite.config.js
 ```
 
 ## Arquitectura
-- **Componentes:** Cada sección de la landing será un componente React independiente.
-- **Estilos:** Estilos encapsulados por componente (CSS Modules).
-- **Datos:** Datos estáticos (menú, reseñas) pueden estar en archivos JSON dentro de `src/data/`.
-- **Responsivo:** Diseño mobile-first usando media queries.
+- **Frontend:** Cada sección de la landing es un componente React independiente con CSS Modules.
+- **Backend:** Express en `backend/` (puerto 3001) con CORS, rate limiting y JSON.
+- **API:**
+  - `GET /health` — health check
+  - `GET /confirmado` — confirmación double opt-in
+  - `POST /api/subscribe` — newsletter (Brevo, rate limit 10/h)
+  - `GET /api/reviews` — obtener reseñas
+  - `POST /api/reviews` — publicar reseña (rate limit 10/h)
+- **Datos:** Datos estáticos en `src/data/`; reseñas publicadas persisten en `backend/data/reviews.json`.
+- **Env:** Frontend usa `VITE_API_URL` (ver `.env.example`); backend usa `BREVO_*`, `CORS_ORIGIN`, etc. (ver `backend/.env.example`).
+- **Responsivo:** Diseño mobile-first usando media queries (breakpoint 768px).
 
 ## Wireframe (de funcionalidad)
 1. **Header/Navbar:** Logo, enlaces de navegación (Menú, Reservar, Galería, Contacto, Reseñas).
@@ -87,8 +116,8 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 4. **Reservaciones:** Formulario con campos: Nombre, Email, Teléfono, Fecha, Hora, Número de personas.
 5. **Galería de Fotos:** Grid de imágenes (masonry o carrusel) del restaurante y platos.
 6. **Ubicación/Contacto:** Mapa embebido (Google Maps/Leaflet), dirección, teléfono, email, horarios, iconos de redes sociales.
-7. **Reseñas:** Carrusel o grid de testimonios con foto, nombre, estrellas, comentario.
-8. **Footer:** Logo, copyright, links rápidos, newsletter signup.
+7. **Reseñas:** Carrusel de testimonios + formulario "Publica Tu Reseña" (nombre, estrellas 1-5, comentario) con publicación inmediata vía API.
+8. **Footer:** Logo, copyright, links rápidos, newsletter signup (double opt-in Brevo).
 
 ### Wireframes Detallados (ASCII Art)
 
@@ -233,8 +262,8 @@ Menu abierto:
 |  |                                   |     |  Dom: 13:00-16:00                 |                 |
 |  |  TELÉFONO *           FECHA *     |     |                                   |                 |
 |  |  [________________] [📅 Fecha]   |     |  📞 Contacto                      |                 |
-|  |                                   |     |  +34 912 345 678                  |                 |
-|  |  HORA *                          |     |  info@corteitaliana.es              |                 |
+|  |                                   |     |  +502 58621717                    |                 |
+|  |  HORA *                          |     |  emichg5862@gmail.com             |                 |
 |  |  [⏰ Hora]                       |     |                                   |                 |
 |  |                                   |     |  📋 Política                      |                 |
 |  |  NOTAS ADICIONALES               |     |  Cancela con 24h antelación       |                 |
@@ -259,7 +288,7 @@ Menu abierto:
 | | Sáb: 13:00-23:30      | |
 | | Dom: 13:00-16:00      | |
 | |                       | |
-| | 📞 +34 912 345 678    | |
+| | 📞 +502 58621717     | |
 | +-----------------------+ |
 |                           |
 | NOMBRE *                  |
@@ -354,14 +383,15 @@ Lightbox (al hacer click):
 |                                                                                                  |
 |  +-----------------------------------+     +-----------------------------------+                 |
 |  |  📍 Dirección                     |     |                                   |                 |
-|  |  Calle Gran Vía, 42               |     |         [MAPA EMbebido]           |                 |
-|  |  28013 Madrid, España             |     |         Google Maps / OSM         |                 |
+|  |  Gasolinera San Miguel, 12        |     |         [MAPA EMbebido]           |                 |
+|  |  Cantel, Quetzaltenango           |     |         Google Maps / OSM         |                 |
+|  |  Guatemala                         |     |                                   |                 |
 |  |                                   |     |                                   |                 |
 |  |  📞 Teléfono                      |     |         [Marcador 📍]             |                 |
-|  |  +34 912 345 678                  |     |                                   |                 |
+|  |  +502 58621717                    |     |                                   |                 |
 |  |                                   |     +-----------------------------------+                 |
 |  |  ✉️ Email                         |                                                           |
-|  |  info@corteitaliana.es              |                                                           |
+|  |  emichg5862@gmail.com             |                                                           |
 |  |                                   |                                                           |
 |  |  🕐 Horarios                      |                                                           |
 |  |  L-V: 13:00-16:00, 19:00-23:00    |                                                           |
@@ -387,14 +417,15 @@ Lightbox (al hacer click):
 | +-----------------------+ |
 |                           |
 | 📍 Dirección              |
-| Calle Gran Vía, 42        |
-| 28013 Madrid              |
+| Gasolinera San Miguel, 12 |
+| Cantel, Quetzaltenango    |
+| Guatemala                  |
 |                           |
 | 📞 Teléfono               |
-| +34 912 345 678           |
+| +502 58621717             |
 |                           |
 | ✉️ Email                  |
-| info@corteitaliana.es       |
+| emichg5862@gmail.com      |
 |                           |
 | 🕐 Horarios               |
 | L-V: 13-16, 19-23         |
@@ -424,6 +455,19 @@ Lightbox (al hacer click):
 |       +------------------+  +------------------+  +------------------+                           |
 |                                                                                                  |
 |                    [●] [○] [○]  (paginación)                                                     |
+|                                                                                                  |
+|                          PUBLICA TU RESEÑA                                                       |
+|                          ─────────────────                                                       |
+|  NOMBRE *                  CALIFICACIÓN *                                                        |
+|  [________________]        ★ ★ ★ ★ ★                                                             |
+|                                                                                                  |
+|  COMENTARIO *                                                                   [PUBLICAR]      |
+|  [________________________________________________________________]                               |
+|  [________________________________________________________________]                               |
+|  [________________________________________________________________]                               |
+|  [________________________________________________________________]                               |
+|                                                                                                  |
+|  (si todo ok) ¡Gracias! Tu reseña se publicó correctamente.                                      |
 +--------------------------------------------------------------------------------------------------+
 ```
 
@@ -444,6 +488,21 @@ Lightbox (al hacer click):
 |      +---------------+     |
 |                           |
 |        [●] [○] [○]        |
+|                           |
+|  PUBLICA TU RESEÑA        |
+|  ─────────────────        |
+|  NOMBRE *                 |
+|  [___________________]    |
+|                           |
+|  CALIFICACIÓN *           |
+|  ★ ★ ★ ★ ★                |
+|                           |
+|  COMENTARIO *             |
+|  [___________________]    |
+|  [___________________]    |
+|  [___________________]    |
+|                           |
+|  [  PUBLICAR RESEÑA  ]    |
 +---------------------------+
 ```
 
@@ -456,9 +515,9 @@ Lightbox (al hacer click):
 +--------------------------------------------------------------------------------------------------+
 |  🍝 Corte Italiana        ENLACES RÁPIDOS      CONTACTO              NEWSLETTER                   |
 |  Auténtica cocina        ───────────────       ────────              ──────────                   |
-|  italiana desde 1985     Inicio                📍 Gran Vía, 42       Suscríbete para             |
-|                          Menú                  📞 +34 912 345 678    ofertas exclusivas          |
-|                          Reservar              ✉️ info@corteitaliana.es [Tu email] [→]             |
+|  italiana desde 1985     Inicio                📍 Gasolinera San Miguel, 12  Suscríbete para     |
+|                          Menú                  📞 +502 58621717       ofertas exclusivas          |
+|                          Reservar              ✉️ emichg5862@gmail.com [Tu email] [→]             |
 |                          Galería                                                             |
 |                          Contacto                                                             |
 |                          Reseñas                                                              |
@@ -487,9 +546,9 @@ Lightbox (al hacer click):
 |                           |
 |  CONTACTO                 |
 |  ────────                 |
-|  📍 Gran Vía, 42          |
-|  📞 +34 912 345 678       |
-|  ✉️ info@corteitaliana.es   |
+|  📍 Gasolinera San Miguel, 12 |
+|  📞 +502 58621717         |
+|  ✉️ emichg5862@gmail.com  |
 |                           |
 |  NEWSLETTER               |
 |  ──────────               |
@@ -514,7 +573,7 @@ Lightbox (al hacer click):
 | Reservaciones | Formulario, Info | 2 columnas | 1 columna |
 | Galería | Grid, Lightbox | 4 columnas | 2 columnas |
 | Ubicación | Info, Mapa | 2 columnas | 1 columna |
-| Reseñas | Carrusel cards | 3 visibles | 1 visible |
+| Reseñas | Carrusel + Form publicar | 3 visibles + form | 1 visible + form |
 | Footer | Links, Newsletter | 4 columnas | 1 columna |
 
 ## Convenciones
@@ -525,12 +584,15 @@ Lightbox (al hacer click):
 - **Propiedades:** Usar destructuring en parámetros de componentes.
 
 ## Estilo Visual
-- **Paleta de Colores:**
-  - Principal: Negro (#1a1a1a) y Dorado (#d4af37).
-  - Secundario: Blanco (#ffffff), Gris claro (#f5f5f5), Dorado oscuro (#b8860b).
+- **Paleta de Colores (CSS variables en `src/styles/index.css`):**
+  - `--color-primary`: Negro (#1a1a1a).
+  - `--color-secondary`: Dorado (#b8960b).
+  - `--color-dark-gold`: Dorado oscuro (#8b6914).
+  - `--color-white`: Blanco (#ffffff).
+  - `--color-gray-light`: Gris claro (#f5f5f5).
 - **Tipografía:**
-  - Títulos: Fuente serif elegante (ej. Playfair Display, Georgia).
-  - Cuerpo: Fuente sans-serif limpia (ej. Lato, Open Sans).
+  - Títulos: `--font-heading` Playfair Display, Georgia, serif.
+  - Cuerpo: `--font-body` Lato, Open Sans, sans-serif.
 - **Diseño:**
   - Líneas limpias, espacios generosos.
   - Elementos dorados como acentos (bordes, iconos, hover effects).
@@ -550,11 +612,11 @@ Lightbox (al hacer click):
 
 ## Flujo de Trabajo
 1. **Planificación:** Revisar `constitution/roadmap.md` para la siguiente tarea.
-2. **Documentación:** Crear carpeta en `features/` con `plan.md`, `spec.md`, `task.md`.
-3. **Implementación:** Crear componentes en `src/components/`.
+2. **Documentación:** Crear carpeta en `features/frontend/` o `features/backend/` con `plan.md`, `spec.md`, `task.md`.
+3. **Implementación:** Crear componentes en `src/components/` (o rutas/servicios en `backend/`).
 4. **Estilización:** Crear estilos en CSS Modules.
 5. **Testing:** Escribir tests unitarios para componentes.
-6. **Revisión:** Verificar lint, responsividad, accesibilidad.
+6. **Revisión:** Verificar lint, tests, responsividad, accesibilidad.
 7. **Integración:** Merge a main (o rama de desarrollo).
 8. **Actualización:** Mover tarea a "hecho" en `constitution/roadmap.md`.
 
@@ -562,4 +624,4 @@ Lightbox (al hacer click):
 - Mantener `README.md` actualizado con specs y estructura.
 - Actualizar `constitution/roadmap.md` al completar features.
 - Documentar decisiones técnicas en `constitution/tech-stack.md`.
-- Cada feature debe tener su documentación en `features/`.
+- Cada feature debe tener su documentación en `features/frontend/` o `features/backend/`.
