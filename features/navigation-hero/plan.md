@@ -14,7 +14,7 @@ Implementar un header fijo con navegación suave y una sección hero impactante 
 2. **Hero Component:**
    - Imagen de fondo de alta calidad (restaurante italiano elegante)
    - Overlay oscuro sutile para mejorar legibilidad
-   - Título principal: "La Dolce Vita"
+   - Título principal: "Corte Italiana"
    - Subtítulo: "Auténtica cocina italiana en el corazón de la ciudad"
    - Botón CTA: "Reserva Tu Mesa"
    - Scroll indicator animado

@@ -1,4 +1,4 @@
-# La Dolce Vita - Landing Page Restaurante Italiano
+# Corte Italiana - Landing Page Restaurante Italiano
 
 Landing page moderna, elegante y responsiva para un restaurante italiano.
 

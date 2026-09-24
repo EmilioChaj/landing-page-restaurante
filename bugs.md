@@ -2,7 +2,7 @@
 El problema es que la misma información está escrita en múltiples archivos. Si mañana cambias el teléfono, tendrás que buscar y modificar 3 archivos diferentes:
 Dato
 Teléfono +34 912 345 678
-Email info@ladolcevita.es
+Email info@corteitaliana.es
 Dirección Calle Gran Vía, 42
 Horarios
 Links redes sociales

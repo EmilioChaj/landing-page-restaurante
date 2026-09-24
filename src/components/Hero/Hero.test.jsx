@@ -5,7 +5,7 @@ describe('Hero', () => {
   it('renders title', () => {
     render(<Hero />);
 
-    expect(screen.getByText('La Dolce Vita')).toBeInTheDocument();
+    expect(screen.getByText('Corte Italiana')).toBeInTheDocument();
   });
 
   it('renders subtitle', () => {

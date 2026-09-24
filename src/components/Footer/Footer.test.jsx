@@ -9,7 +9,7 @@ describe('Footer', () => {
   it('renders restaurant name', () => {
     render(<Footer />);
 
-    expect(screen.getByText('La Dolce Vita')).toBeInTheDocument();
+    expect(screen.getByText('Corte Italiana')).toBeInTheDocument();
   });
 
   it('renders quick links', () => {

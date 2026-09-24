@@ -82,7 +82,7 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 
 ## Wireframe (de funcionalidad)
 1. **Header/Navbar:** Logo, enlaces de navegación (Menú, Reservar, Galería, Contacto, Reseñas).
-2. **Hero:** Imagen de fondo atractiva, título principal ("La Dolce Vita"), subtítulo, botón CTA ("Reserva Ahora").
+2. **Hero:** Imagen de fondo atractiva, título principal ("Corte Italiana"), subtítulo, botón CTA ("Reserva Ahora").
 3. **Menú Digital:** Categorías (Entradas, Primeros Platos, Platos Fuertes, Postres), grid de platos con imagen, nombre, descripción, precio.
 4. **Reservaciones:** Formulario con campos: Nombre, Email, Teléfono, Fecha, Hora, Número de personas.
 5. **Galería de Fotos:** Grid de imágenes (masonry o carrusel) del restaurante y platos.
@@ -97,7 +97,7 @@ Desarrollar una landing page moderna, elegante y responsiva para un restaurante 
 **Desktop:**
 ```
 +--------------------------------------------------------------------------------------------------+
-|  [Logo: 🍝 La Dolce Vita]     Inicio | Menú | Reservar | Galería | Contacto | Reseñas    [CTA]  |
+|  [Logo: 🍝 Corte Italiana]     Inicio | Menú | Reservar | Galería | Contacto | Reseñas    [CTA]  |
 +--------------------------------------------------------------------------------------------------+
 ```
 
@@ -133,7 +133,7 @@ Menu abierto:
 |                              [Imagen de fondo: Restaurante italiano elegante]                    |
 |                              [Overlay oscuro semi-transparente]                                   |
 |                                                                                                  |
-|                                   LA DOLCE VITA                                                  |
+|                                   CORTE ITALIANA                                                 |
 |                     Auténtica cocina italiana en el corazón de la ciudad                          |
 |                                                                                                  |
 |                            [  RESERVA TU MESA  ]                                                 |
@@ -149,7 +149,7 @@ Menu abierto:
 |   [Imagen de fondo]       |
 |   [Overlay oscuro]        |
 |                           |
-|    LA DOLCE VITA          |
+|    CORTE ITALIANA         |
 |                           |
 |   Auténtica cocina        |
 |   italiana en el          |
@@ -234,7 +234,7 @@ Menu abierto:
 |  |  TELÉFONO *           FECHA *     |     |                                   |                 |
 |  |  [________________] [📅 Fecha]   |     |  📞 Contacto                      |                 |
 |  |                                   |     |  +34 912 345 678                  |                 |
-|  |  HORA *                          |     |  info@ladolcevita.es              |                 |
+|  |  HORA *                          |     |  info@corteitaliana.es              |                 |
 |  |  [⏰ Hora]                       |     |                                   |                 |
 |  |                                   |     |  📋 Política                      |                 |
 |  |  NOTAS ADICIONALES               |     |  Cancela con 24h antelación       |                 |
@@ -361,7 +361,7 @@ Lightbox (al hacer click):
 |  |  +34 912 345 678                  |     |                                   |                 |
 |  |                                   |     +-----------------------------------+                 |
 |  |  ✉️ Email                         |                                                           |
-|  |  info@ladolcevita.es              |                                                           |
+|  |  info@corteitaliana.es              |                                                           |
 |  |                                   |                                                           |
 |  |  🕐 Horarios                      |                                                           |
 |  |  L-V: 13:00-16:00, 19:00-23:00    |                                                           |
@@ -394,7 +394,7 @@ Lightbox (al hacer click):
 | +34 912 345 678           |
 |                           |
 | ✉️ Email                  |
-| info@ladolcevita.es       |
+| info@corteitaliana.es       |
 |                           |
 | 🕐 Horarios               |
 | L-V: 13-16, 19-23         |
@@ -454,17 +454,17 @@ Lightbox (al hacer click):
 **Desktop:**
 ```
 +--------------------------------------------------------------------------------------------------+
-|  🍝 La Dolce Vita        ENLACES RÁPIDOS      CONTACTO              NEWSLETTER                   |
+|  🍝 Corte Italiana        ENLACES RÁPIDOS      CONTACTO              NEWSLETTER                   |
 |  Auténtica cocina        ───────────────       ────────              ──────────                   |
 |  italiana desde 1985     Inicio                📍 Gran Vía, 42       Suscríbete para             |
 |                          Menú                  📞 +34 912 345 678    ofertas exclusivas          |
-|                          Reservar              ✉️ info@ladolcevita.es [Tu email] [→]             |
+|                          Reservar              ✉️ info@corteitaliana.es [Tu email] [→]             |
 |                          Galería                                                             |
 |                          Contacto                                                             |
 |                          Reseñas                                                              |
 |                                                                                                  |
 |  ──────────────────────────────────────────────────────────────────────────────────────────────── |
-|                    © 2024 La Dolce Vita. Todos los derechos reservados.                         |
+|                    © 2024 Corte Italiana. Todos los derechos reservados.                        |
 +--------------------------------------------------------------------------------------------------+
 ```
 
@@ -472,7 +472,7 @@ Lightbox (al hacer click):
 ```
 +---------------------------+
 |                           |
-|  🍝 La Dolce Vita         |
+|  🍝 Corte Italiana        |
 |  Auténtica cocina         |
 |  italiana desde 1985      |
 |                           |
@@ -489,14 +489,14 @@ Lightbox (al hacer click):
 |  ────────                 |
 |  📍 Gran Vía, 42          |
 |  📞 +34 912 345 678       |
-|  ✉️ info@ladolcevita.es   |
+|  ✉️ info@corteitaliana.es   |
 |                           |
 |  NEWSLETTER               |
 |  ──────────               |
 |  [Tu email    ] [→]       |
 |                           |
 |  ─────────────────────    |
-|  © 2024 La Dolce Vita.    |
+|  © 2024 Corte Italiana.   |
 |  Todos los derechos       |
 |  reservados.              |
 +---------------------------+

@@ -9,7 +9,7 @@ const Hero = () => {
     <section id="inicio" className={styles.hero}>
       <div className={styles.overlay}></div>
       <div className={styles.content}>
-        <h1 className={styles.title}>La Dolce Vita</h1>
+        <h1 className={styles.title}>Corte Italiana</h1>
         <p className={styles.subtitle}>
           Auténtica cocina italiana en el corazón de la ciudad
         </p>

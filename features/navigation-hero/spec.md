@@ -16,7 +16,7 @@
 ### Hero
 - [ ] Imagen de fondo cubre toda la pantalla
 - [ ] Texto centrado y legible
-- [ ] Título: "La Dolce Vita" (fuente serif)
+- [ ] Título: "Corte Italiana" (fuente serif)
 - [ ] Subtítulo descriptivo
 - [ ] Botón CTA con hover effect
 - [ ] Scroll indicator animado

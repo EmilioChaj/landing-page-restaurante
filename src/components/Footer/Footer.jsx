@@ -24,7 +24,7 @@ const Footer = () => {
           <div className={styles.brand}>
             <a href="#inicio" className={styles.logo}>
               <span className={styles.logoIcon}>🍝</span>
-              <span className={styles.logoText}>La Dolce Vita</span>
+              <span className={styles.logoText}>Corte Italiana</span>
             </a>
             <p className={styles.tagline}>
               Auténtica cocina italiana desde 1985
@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className={styles.bottom}>
-          <p>&copy; {currentYear} La Dolce Vita. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} Corte Italiana. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

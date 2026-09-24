@@ -30,7 +30,7 @@ const Header = () => {
       <div className={styles.container}>
         <a href="#inicio" className={styles.logo}>
           <span className={styles.logoIcon}>🍝</span>
-          <span className={styles.logoText}>La Dolce Vita</span>
+          <span className={styles.logoText}>Corte Italiana</span>
         </a>
 
         <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.navOpen : ''}`}>

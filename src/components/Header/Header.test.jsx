@@ -12,7 +12,7 @@ describe('Header', () => {
   it('renders logo', () => {
     render(<Header />);
 
-    expect(screen.getByText('La Dolce Vita')).toBeInTheDocument();
+    expect(screen.getByText('Corte Italiana')).toBeInTheDocument();
     expect(screen.getByText('🍝')).toBeInTheDocument();
   });
 

@@ -66,7 +66,7 @@ const Location = () => {
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
-              title="Ubicación del restaurante La Dolce Vita en Google Maps"
+              title="Ubicación del restaurante Corte Italiana en Google Maps"
             /> 
           </div>
 
