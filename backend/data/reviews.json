@@ -54,5 +54,13 @@
     "estrellas": 3,
     "comentario": "aaaaaaaaaaaaaaaaaaa gggggggggggggggggggggggg eeeeeeeeeeeeeet",
     "fecha": "2026-09-24"
+  },
+  {
+    "id": 8,
+    "nombre": "Emilio",
+    "foto": "https://ui-avatars.com/api/?name=Emilio&background=b8960b&color=1a1a1a&size=128",
+    "estrellas": 3,
+    "comentario": "Hola mundo ajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj akdlasdkjfasljfals",
+    "fecha": "2026-10-01"
   }
 ]
