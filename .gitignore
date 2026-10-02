@@ -28,3 +28,8 @@ npm-debug.log*
 backend/node_modules/
 backend/.env
 backend/*.log
+
+bugs.md
+node_modules/
+src/assets/
+
